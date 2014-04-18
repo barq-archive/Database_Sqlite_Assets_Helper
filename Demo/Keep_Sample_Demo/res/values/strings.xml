@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Keep</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_add">Add</string>
+    <string name="action_info">About</string>
+    <string name="enter_hint">Enter your thoughts her</string>
+    <string name="deleted">Item deleted !</string>
+    
+    <string name="About">This is demo for the Database Helper library developer by Barqawiz</string>
+
+</resources>

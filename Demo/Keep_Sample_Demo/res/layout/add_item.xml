@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/add_dialog" 
+    android:orientation="vertical">
+    
+	<EditText 
+	    android:id="@+id/text_to_add"
+	    android:layout_width="@dimen/dialog_text_width"
+    	android:layout_height="wrap_content"
+    	android:background="@color/item_color1"
+    	android:singleLine="false"
+    	android:hint="@string/enter_hint"
+    	android:lines="6"/>
+	<LinearLayout 
+	    android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="@dimen/small_padding"
+    	android:orientation="horizontal"
+    	android:gravity="left">
+	    <ImageButton 
+	        android:id="@+id/item_color1"
+	        android:layout_width="@dimen/color_item_size"
+    		android:layout_height="@dimen/color_item_size"
+    		android:background="@color/item_color1" />
+	     <ImageButton 
+	        android:id="@+id/item_color2"
+	        android:layout_width="@dimen/color_item_size"
+    		android:layout_height="@dimen/color_item_size"
+    		android:layout_marginLeft="@dimen/small_padding"
+    		android:background="@color/item_color2" />
+	      <ImageButton 
+	        android:id="@+id/item_color3"
+	        android:layout_width="@dimen/color_item_size"
+    		android:layout_height="@dimen/color_item_size"
+    		android:layout_marginLeft="@dimen/small_padding"
+    		android:background="@color/item_color3"	/>
+	</LinearLayout>
+	<Button
+	    android:id="@+id/button_add"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/action_add" />
+	
+</LinearLayout>
