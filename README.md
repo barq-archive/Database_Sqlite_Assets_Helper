@@ -13,13 +13,6 @@ Methods
 * `DatabaseAdapter` (optional) adapter class to use in your code so it will save time on you
 * `SimpleCursorLoader` (optional) utility to manage the cursor life cycle inside a listview in case you don’t want implement content provider
 
-Methods
------
-* `Config` simple class to setup the configuration for the library
-* `DatabaseHelper` class extends the SQLiteOpenHelper to manage the database version and creation
-* `DatabaseAdapter` (optional) adapter class to use in your code so it will save time on you
-* ‘SimpleCursorLoader’ (optional) utility to manage the cursor life cycle inside a listview in case you don’t want implement content provider
-
 
 Setup
 -----
@@ -104,6 +97,8 @@ Credit
 
 ###Contributors
 * **Cristian** *SimpleCursorLoader*
+
+*Contributors need to maintain version management and keep user data when copy new version database*
 
 License
 -------
