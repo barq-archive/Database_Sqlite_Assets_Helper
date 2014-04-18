@@ -116,3 +116,4 @@ License
     copies or substantial portions of the Software.
 
 [0]: https://raw.github.com/Barqawiz/Database_Sqlite_Assets_Helper/master/DBHelper.jar
+ 
