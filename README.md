@@ -11,7 +11,7 @@ Methods
 * `Config` simple class to setup the configuration for the library
 * `DatabaseHelper` class extends the SQLiteOpenHelper to manage the database version and creation
 * `DatabaseAdapter` (optional) adapter class to use in your code so it will save time on you
-* ‘SimpleCursorLoader’ (optional) utility to manage the cursor life cycle inside a listview in case you don’t want implement content provider
+* `SimpleCursorLoader` (optional) utility to manage the cursor life cycle inside a listview in case you don’t want implement content provider
 
 
 Setup
@@ -85,17 +85,17 @@ public class DBAdapter extends DatabaseAdapter {
 } // class: Database adapter class
 ```
 
-This is screenshot from sample application that use **Helper_Library** <br/>
+This is screenshot from sample application that use **Helper_Library** <br/><br/>
  ![alt tag](https://raw.github.com/Barqawiz/Database_Sqlite_Assets_Helper/master/Demo/screenshot.png) 
 
 
 Credit
 ------------
 ###Author
-* Ahmad Barqaiw (@Barqawi88)
+* **Ahmad Barqawi** (@Barqawi88)
 
 ###Contributors
-* cristian *SimpleCursorLoader*
+* **Cristian** *SimpleCursorLoader*
 
 *contributors needed to maintain database version change because this once delete the user data and copy the new database when change the version number*
 
