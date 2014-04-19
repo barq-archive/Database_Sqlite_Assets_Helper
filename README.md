@@ -130,5 +130,4 @@ License
     The above copyright notice and this permission notice shall be included in all
     copies or substantial portions of the Software.
 
-[0]: https://raw.github.com/Barqawiz/Database_Sqlite_Assets_Helper/master/db-helper.jar
- 
+[0]: https://raw.github.com/Barqawiz/Database_Sqlite_Assets_Helper/master/helper_library.jar 
