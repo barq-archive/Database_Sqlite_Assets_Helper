@@ -112,7 +112,7 @@ Credit
 ###Contributors
 * **Cristian** *SimpleCursorLoader*
 
-*Contributors need to maintain version management and keep user data when copy new version database*
+*Contributors needed to maintain version management and keep user data when copy new version database*
 
 License
 -------
