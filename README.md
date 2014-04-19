@@ -33,13 +33,15 @@ Following steps show you how to use `DatabaseHelper`:
        DatabaseHelper dbHelper = new DatabaseHelper(config); 
        dbHelper.createDatabase();
    ```
-4. Get database object
+4. Get database object <br/>
    ``` SQLiteDatabase db = dbHelper.getWritableDatabase();   ```
 
 5. Now you can start writing database queries like: 
-    ``` db.insert(tableName, rowValues, null); 
-        db.query(tableName, cols, selection, where, null, null, orderby); 
     ``` 
+        db.insert(tableName, rowValues, null); 
+        db.query(tableName, cols, selection, where, null, null, orderby); 
+    ```
+<br/>
 For how to use the `DatabaseAdapter` class instead of using `DatabaseHelper` directly check the sample section.
 
 Sample
