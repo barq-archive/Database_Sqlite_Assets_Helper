@@ -16,8 +16,8 @@ Methods
 
 Setup
 -----
-Add the [jar][0] file in your project lib folder 
-OR Import the project “Helper_Library” and add it in your project build path as library (in Eclipse: right click on your project > Properties > Android > Add..) <br/>
+Add the [jar][0] file in your project lib folder <br/> 
+**OR** Import the project “Helper_Library” and add it in your project build path as library (in Eclipse: right click on your project > Properties > Android > Add..) <br/>
 
 HowTo
 -----
