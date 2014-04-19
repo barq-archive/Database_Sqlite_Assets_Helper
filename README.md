@@ -21,18 +21,30 @@ OR Import the project “Helper_Library” and add it in your project build path
 
 HowTo
 -----
+Following steps show you how to use `DatabaseHelper`:
+ 
 1. Add sqlite database in the assets folder
 
 2. Initial the `Config` (make sure the name of database match the file in assets)<br/>
    ``` Config config = new Config(“database_name”, 1/*version*/, this);  ```
 
-3. Open the database, make sure it is called at least once in the application, don’t worry the database will moved only once for every version number even if you called this method many times:
-   ``` DBAdapter.getInstance().open(config); ```
+3. Create the database, make sure it is called at least once in the application, don’t worry the database will moved only once for every version number even if you called this method many times:
+   ``` 
+       DatabaseHelper dbHelper = new DatabaseHelper(config); 
+       dbHelper.createDatabase();
+   ```
+4. Get database object
+   ``` SQLiteDatabase db = dbHelper.getWritableDatabase();   ```
 
+5. Now you can start writing database queries like: 
+    ``` db.insert(tableName, rowValues, null); 
+        db.query(tableName, cols, selection, where, null, null, orderby); 
+    ``` 
+For how to use the `DatabaseAdapter` class instead of using `DatabaseHelper` directly check the sample section.
 
 Sample
 ------------
-Check **Keep_Sample_Demo** to see how to use the library, following code it from the sample adapter, it is extend the library adapter and write a layer of custom database operations code:
+Check **Keep_Sample_Demo** to see how to use the library, following code it from the sample adapter, it is extend the library `DatabaseAdapter` and write a layer of custom database operations code:
 ```
 public class DBAdapter extends DatabaseAdapter {
 
