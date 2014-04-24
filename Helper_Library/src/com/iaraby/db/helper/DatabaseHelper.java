@@ -52,6 +52,7 @@ import android.util.Log;
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
 	
+	private DBListener listener;
 	
 	private SQLiteDatabase dbManager;
 	private Config config;
@@ -78,6 +79,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				null, SQLiteDatabase.OPEN_READWRITE);
 
 		return dbManager;
+	}
+	
+	/**
+	 * Notify the listener that database is opened and read to use
+	 */
+	public void notifyDatabaseOepend() {
+		if (listener != null)
+			listener.onDatabaseOpened();
 	}
 
 	/**
@@ -122,7 +131,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public synchronized void createDatabase() throws IOException{
 		
 		if (isDatabaseExist()) {
-			
+			if (listener != null)
+				listener.onDataExist();
 		} else {
 			//create empty database to create the path 
 			this.getReadableDatabase().close();
@@ -131,7 +141,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				copyDatabase();
 				Util.saveValue(config.getVersionTag(), config.getVersion(), config.getContext());
 				this.close();
-				
+				if (listener != null)
+					listener.onFinishCoping();
 			} catch(IOException ex) {
 				throw new Error("Error while coping the database:", ex);
 			} //try to copy the database
@@ -154,7 +165,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 					SQLiteDatabase.OPEN_READWRITE);
 		} catch (SQLiteException e) {
 			//not error just to check if database exists or not
-			Log.i("Database Helper", "Database does not exits");
+			Log.i("Database Helper", "Database does not exits, working to create databse...");
 		} //try-catch
 		
 		if (tempDB != null) {
@@ -168,6 +179,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			int currentVersion = prefManager.getInt(config.getVersionTag(), Config.DEFAULT_VERSION);
 			res = (currentVersion == config.getVersion());
 			
+			if ((currentVersion != config.getVersion()))
+				Log.i("Database Helper", "Database version changed");
 		}
 		
 		return res;
@@ -183,6 +196,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		input.close();
 	}
 	
+	/**
+	 * Call this method if you want to know when the helper finish moving the data to do 
+	 * any required operation
+	 * 
+	 * @param DBListener listener
+	 */
+	public void setListener(DBListener listener) {
+		this.listener = listener;
+	}
 	
 	/*---------------------*/
 
@@ -202,4 +224,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				"current version does not support keep old data when move new database yet !");
 	} // method: on upgrade
 
+	public interface DBListener {
+		public void onFinishCoping();
+		public void onDataExist();
+		public void onDatabaseOpened();
+	}
 }

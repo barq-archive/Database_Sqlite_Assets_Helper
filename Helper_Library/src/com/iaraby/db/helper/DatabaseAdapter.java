@@ -25,6 +25,8 @@ package com.iaraby.db.helper;
 
 import java.io.IOException;
 
+import com.iaraby.db.helper.DatabaseHelper.DBListener;
+
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -80,15 +82,23 @@ public class DatabaseAdapter {
 	 * @throws IOException
 	 */
 	public void open(Config config) throws IOException {
+		open(config, null);
+	} // method: open the database to be ready for operations
+
+	public void open(Config config, DBListener listener) throws IOException {
 		if (dbHelper == null) {
 			dbHelper = new DatabaseHelper(config);
+			if (listener != null)
+				dbHelper.setListener(listener);
 			dbHelper.createDatabase();
 		}
 
-		if (db == null || !db.isOpen())
+		if (db == null || !db.isOpen()) {
 			db = dbHelper.getWritableDatabase();
+			dbHelper.notifyDatabaseOepend();
+		}
 	} // method: open the database to be ready for operations
-
+	
 	public void close() {
 		if (db != null) {
 			db.close();
@@ -207,4 +217,8 @@ public class DatabaseAdapter {
 		return db.delete(tableName, selection, where);
 	}
 
+	public void setListener(DBListener listener) {
+		if (dbHelper != null)
+			dbHelper.setListener(listener);
+	}
 } // class: database adapter
